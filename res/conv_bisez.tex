@@ -1,1 +1,18 @@
 \section{Convergenza del metodo di bisezione}
+Il metodo di bisezione si basa sull'applicazione iterativa del \underline{Teorema degli zeri di funzioni continue}:\\
+Se $f(x) \in C[a,b]\,$ e $\,f(a)f(b)<0 \,$ (cioè $f$ cambia segno) allora
+\[\exists \xi : f(\xi)=0, \ \xi \in (a,b)\]
+Il procedimento consiste nel passare da $[a_n,b_n] \, \rightarrow \, [a_{n+1},b_{n+1}]$ in cui uno degli estremi è diventato il punto medio
+\[
+x_n=\frac{a_n+b_n}{2}
+\]
+A meno che per qualche $n$ non risulti $f(x_n)=0$, si tratta di un processo infinito che ci permette di costruire tre successioni $\{a_n\}\,,\{b_n\}\,,\{x_n\}$ tali che:
+\begin{itemize}
+    \item $|\xi - a_n|, \ |\xi - b_n| \leq b_n-a_n=\frac{b-a}{2^n}$
+	\item $|\xi - x_n| < \frac{b_n - a_n}{2} = \frac{b-a}{2^{n+1}}$
+\end{itemize}
+È semplice dimostrare che tutte e tre le successioni convergono ad uno zero $\xi \in (a,b)$
+\begin{itemize}
+	\item $0 \le \abs{\,\xi - a_n\,}, \ \abs{\,\xi - b_n\,} < \frac{b-a}{2^n}\underset{n\to \infty}{\longrightarrow}  0 \, \underset{\text{Teor. Carabinieri}}{\Longrightarrow} \, \abs{\,\xi - a_n\,}, \ \abs{\,\xi - b_n\,} \longrightarrow 0, \ n \rightarrow \infty$
+	\item $0 \le \abs{\,\xi - x_n\,} < \frac{b-a}{2^{n+1}} \, \Longrightarrow \,\abs{\,\xi - x_n\,} \longrightarrow 0, \ n \rightarrow \infty$
+\end{itemize}

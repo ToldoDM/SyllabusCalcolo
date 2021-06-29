@@ -1,0 +1,52 @@
+\section{Stima dell'errore con residuo pesato (metodo bisezione)}
+Vogliamo stimare l'errore di bisezione, applicato nelle seguenti ipotesi:
+
+\begin{equation*}
+\begin{rcases}
+f  \in C^1[a,b]\\
+\{x_n\}  \in [c,d] \subseteq [a,b]\\
+f'(x)\ne 0 \,,\, \forall x \in [c,d]
+\end{rcases}
+\Rightarrow e_n = |x_n-\xi| = \frac{|f(x_n)|}{|f'(z_n)|} \,,\,\text{   } n\ge n_0 \,,\,\text{   } z_n \in
+\begin{cases}
+(x_n, \xi) \\
+(\xi, x_n)
+\end{cases}
+\end{equation*}
+\begin{center}
+	$C^1 \,indica \,derivabile \,1 \,volta\, con \,derivata\, continua.$
+\end{center}
+Dimostriamolo utilizzando il \underline{teorema del valor medio}
+\[
+\text{Sia } \,f\in C[a,b]\,\,\, \text{derivabile in }\, [a.b] \Rightarrow \exists z\in [a,b] : \frac{f(b)-f(a)}{b-a}=f'(z)
+\]
+Consideriamo il caso $\xi<x_n$ (se $x_n<\xi$ la dimostrazione è analoga)
+\begin{equation*}
+f(x_n)-f(\xi) = f'(z_n)(x_n-\xi), \text{ } z_n \in (\xi,x_n)
+\end{equation*}
+con $f(\xi)=0$, cioè
+\begin{equation*}
+|f(x_n)| = |f'(z_n)||x_n-\xi|
+\end{equation*}
+che si può riscrivere come
+\begin{equation*}
+e_n = |x_n-\xi| = \frac{|f(x_n)|}{|f'(z_n)|}
+\end{equation*}
+Osserviamo che:
+\begin{itemize}
+	\item $e_n$ è un "residuo pesato"
+	\item $f'(x)\ne 0 \Rightarrow$ zero è semplice
+	\item $e_n$ è una stima a posteriori (serve aver calcolato $x_n$)
+\end{itemize}
+Siccome non conosciamo $z_n$, diamo delle stime pratiche dell'errore:
+\begin{itemize}
+	\item Se è noto che $\abs*{f'(x)}\ge k>0 \Rightarrow e_n=\frac{|f(x_n)|}{|f'(z_n)|}\le  \frac{|f(x_n)|}{k}$
+	\item Se $f'$ è nota, per $n$ abbastanza grande si ha
+	\[
+	\underbrace{f'(x_n)\approx f'(z_n)}_{\approx f'(\xi)} \Longrightarrow e_n \approx \frac{|f(x_n)|}{|f'(z_n)|}
+	\]
+	\item Se $f'$ non è nota, si può approssimare con
+	\[
+	f'(z_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}\,,\,\,\, \text{per $n$ abbastanza grande}
+	\]
+\end{itemize}
