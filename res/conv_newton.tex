@@ -22,4 +22,27 @@ ci sono 4 casi possibili in base al segno di $f''$ ovvero
 \begin{center}
 	\includegraphics[scale=0.35]{pagina11_1.png}
 \end{center}
-In questa dimostrazione di concentriamo sul caso 1
+In questa dimostrazione di concentriamo sul caso 1)\\
+\begin{center}
+	\includegraphics[width=0.3\textwidth]{pagina12_2.PNG} 
+\end{center}
+\begin{itemize}
+	\item $f(a)<0\,,\, f(b)>0$
+	\item $f''(x)>0\,\,\, \forall x\in [a,b]$
+	\item $x_0\in [a,b]$
+\end{itemize}
+Dimostriamo come prima cosa: $x_n\in (\xi,b] \Rightarrow x_{n+1}\in (\xi,b]$
+\begin{center}
+	$f$ è esattamente convessa $\Rightarrow$ La tangente sta "sotto al grafico" $\forall x\in [a,b]$ \\$\Rightarrow $ La tangente in un punto $\in (\xi,b]$ interseca l'asse $x$ "a destra" di $\xi$
+\end{center}
+Dimostriamo quindi: $x_{n+1}<x_n$ (cioè $\{x_n\}$ è decrescente) 
+\[
+x_{n+1} = x_n - 
+\begin{rcases}
+\frac{f(x_n)}{f'(x_n)}
+\end{rcases}
+>0
+\]
+Poiché per $x_n \in (\xi,b\,]$ si ha $f(x_n)>0$. Inoltre $f'(x_n)>0$ in $(\xi,b\,]$ altrimenti per avere uno zero $f''$ in $(\xi,b\,]$ dovrebbe cambiare segno.
+
+
