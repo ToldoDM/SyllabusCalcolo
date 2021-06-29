@@ -1,2 +1,2 @@
 # SyllabusCalcolo
-Dimostrazioni irrinunciabili del syllabu di calcolo numerico
+Dimostrazioni irrinunciabili del syllabus di calcolo numerico
