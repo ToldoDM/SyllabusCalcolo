@@ -1,0 +1,63 @@
+\section{Analisi di stabilità di moltiplicazione, divisione,	addizione e sottrazione con numeri approssimati}
+\subsection{Moltiplicazione}
+\[ \varepsilon_{xy} = \frac{\lvert \, xy - \Tilde{x}\Tilde{y} \, \rvert}{\lvert \, xy \, \rvert}, \quad x , y \ne 0 \]
+Usiamo la stessa tecnica che si usa per dimostrare che il limite del prodotto di due successioni o funzioni è il prodotto dei limiti, aggiungendo e togliendo a numeratore ad esempio $\Tilde{x}y$
+\[\begin{split}
+\varepsilon_{xy} & = \frac{\lvert \, xy - \Tilde{x}y + \Tilde{x}y - \Tilde{x}\Tilde{y} \, \rvert}{\lvert \, y \, \rvert} \\
+& = \frac{\lvert \, \overbrace{y(x - \Tilde{x})}^{=\,a} + \overbrace{\Tilde{x}(y - \Tilde{y})}^{=\,b} \, \rvert}{\lvert\, xy \, \rvert} \\
+& \le \frac{\lvert \, y(x - \Tilde{x}) \rvert + \lvert \Tilde{x}(y - \Tilde{y}) \, \rvert}{\lvert \, xy \, \rvert} \quad (*)
+\end{split}\]
+\[(*)\text{ Disugliaglianza triangolare: } \lvert \lvert \, a \, \rvert - \lvert \, b \, \rvert \rvert \le \lvert \, a + b \, \rvert \le \lvert \, a \, \rvert + \lvert \, b \, \rvert\]
+Quindi otteniamo
+\[ \varepsilon_{xy} \le \frac{\lvert \,y\, \rvert \lvert \,x - \Tilde{x}\, \rvert}{\lvert \,xy\, \rvert} + \frac{\lvert \,\Tilde{x}\, \rvert \lvert \,y - \Tilde{y}\, \rvert}{\lvert \,xy\, \rvert} = \varepsilon_x + \frac{\lvert \,\Tilde{x}\, \rvert}{\lvert \,x\, \rvert} \varepsilon_y\]
+Questo perché $\frac{\lvert \,x - \Tilde{x}\, \rvert}{\lvert \,x\, \rvert} = \varepsilon_x$ e $\frac{\lvert \,y - \Tilde{y}\, \rvert}{\lvert \,y\, \rvert} = \varepsilon_y$.\\
+Poiché $\Tilde{x} \approx x \Rightarrow \frac{\lvert \,\Tilde{x}\, \rvert}{\lvert \,x\, \rvert} \approx 1$ e possiamo quindi dire che la moltiplicazione è STABILE. 
+\[\varepsilon_{xy} \lesssim \varepsilon_x + \varepsilon_y \]
+Però possiamo dare una stima più precisa di  $\frac{\lvert \,\Tilde{x}\, \rvert}{\lvert \,x\, \rvert}$
+\[ \frac{\lvert \,\Tilde{x}\, \rvert}{\lvert \,x\, \rvert} = \underbrace{ \frac{\lvert \, \overbrace{x}^{=\,a} + \overbrace{\Tilde{x} - x}^{=\,b} \, \rvert}{\lvert\, x \, \rvert} \le \frac{\lvert \, x \, \rvert + \lvert \,\Tilde{x} - x\, \rvert}{\lvert\, x \, \rvert}}_{\text{Disuguaglianza Triangolare}} = 1 + \varepsilon_x\]
+e quindi \[ \varepsilon_{xy} \le \varepsilon_x + (1 + \varepsilon_x)\,\varepsilon_y\]\\
+Solitamente $\varepsilon_x \le \varepsilon_M \approx 10^{-16} \Rightarrow 1 + \varepsilon_x$ è vicinissimo ad 1.
+Ma anche se $\varepsilon_x = 1$ (errore del 100\%, molto grande) $\Rightarrow (1+\varepsilon_x)=2$ e la stabilità della moltiplicazione non cambia.
+\subsection{Divisione}
+La divisione è la moltiplicazione per il reciproco $\frac{x}{y} = x \cdot \frac{1}{y}$.\\
+Analizzando quindi l'operazione di reciproco
+\[ \varepsilon_{\frac{1}{y}} = \frac{\abs*{\,\frac{1}{y} - \frac{1}{\Tilde{y}}\,} }{\abs*{\,\frac{1}{y}\,}} = \frac{\frac{\abs*{\,\Tilde{y} - y\,}}{\abs*{\,\Tilde{y}y\,}}}{\abs*{\,\frac{1}{y}\,}} = \frac{\abs*{\,\Tilde{y} - y\,}}{\abs*{\,y\,}} \cdot \frac{\abs*{\,y\,}}{\abs*{\,\Tilde{y}\,}} \approx \varepsilon_y \qquad \Bigl( \text{questo perchè } \frac{\abs*{\,\Tilde{y} - y\,}}{\abs*{\,y\,}} = \varepsilon_y . \Bigr)\]
+Poiché $\frac{\lvert \,y\, \rvert}{\lvert \,\Tilde{y}\, \rvert} \approx 1$ possiamo dedurre che il reciproco, e possiamo quindi la divisione, è STABILE.\\
+Però possiamo dare una stima più precisa di $\frac{\lvert \,y\, \rvert}{\lvert \,\Tilde{y}\, \rvert}$
+\[ \abs{\,\Tilde{y}\,} = \abs{\,y + \Tilde{y} - y\,} = \abs{y}\abs*{\,1 + \frac{(\Tilde{y} - y)}{y}\,}\]
+usando la stima da sotto nella disuguaglianza triangolare 
+\[\abs{\, a + b\,} \ge \abs{\,\abs{\,a\,} - \abs{\,b\,}\,}\]
+$a = 1$ e $b = \frac{(\Tilde{y} - y)}{y}$
+\[\abs*{\,1 + \frac{(\Tilde{y} - y)}{y}\,} \ge \abs*{\,1 - \frac{\abs*{\,\Tilde{y} - y\,}}{\abs{\,y\,}}\,} = \abs*{\,1 - \varepsilon_y\,} = 1 - \varepsilon_y \qquad \Bigl( \text{perchè } \varepsilon_y < 1 \Bigr)\]
+da cui si ottiene 
+\[\abs{\,\Tilde{y}\,} \ge \abs{\,y\,}(1 - \varepsilon_y)\]
+e quindi
+\[\frac{\abs*{\,y\,}}{\abs*{\,\Tilde{y}\,}} \le \frac{\abs*{\,y\,}}{\abs{\,y\,}(1 - \varepsilon_y)} = \frac{1 + \varepsilon_y}{(1 + \varepsilon_y)(1 - \varepsilon_y)} = \underbrace{\frac{1 + \varepsilon_y}{1 - \varepsilon_y^2} \approx 1 + \varepsilon_y}_{\text{Poiché } \varepsilon_y^2 \ll \varepsilon_y < 1}\]
+Quindi
+\[\varepsilon_{\frac{1}{y}} = \varepsilon_y\,\frac{\abs{\,y\,}}{\abs{\,\Tilde{y}\,}} \lesssim \varepsilon_y (1 + \varepsilon_y) \approx \varepsilon_y \Rightarrow \varepsilon_{\frac{1}{y}} \lesssim \varepsilon_y\]
+Infine abbiamo che per la divisione vale (usando la stima della moltiplicazione)
+\[\varepsilon_{\frac{x}{y}} \lesssim \varepsilon_x+\varepsilon_y\]
+\subsection{Somma Algebrica}
+\[x+y = 
+\begin{cases}
+ADDIZIONE & \text{se $sign(x)=sign(y)$} \\
+SOTTRAZIONE & \text{se $sign(x) \ne sign(y)$}
+\end{cases}
+\]
+Per la somma algebrica vale:
+\[\begin{split}
+\varepsilon_{x+y} & = \frac{\abs*{\,(x + y) - (\Tilde{x} + \Tilde{y})\,}}{\abs*{\,x + y\,}} \,, \quad x + y \ne 0 \\
+& = \frac{\abs*{\,x - \Tilde{x} + y - \Tilde{y}\,}}{\abs*{\,x + y\,}} \,, \quad a = x - \Tilde{x} \text{ e } b = y - \Tilde{y} \\
+& \le \frac{\abs*{\,x - \Tilde{x}\,}}{\abs*{\,x + y\,}} + \frac{\abs*{\,y - \Tilde{y}\,}}{\abs*{\,x + y\,}} \,, \quad \text{DISUGUAGLIANZA TRIANGOLARE} \\
+& = \frac{\abs*{\,x\,}}{\abs*{\,x + y\,}} \cdot \frac{\abs*{\,x - \Tilde{x}\,}}{\abs*{\,x\,}} + \frac{\abs*{\,y\,}}{\abs*{\,x + y\,}} \cdot \frac{\abs*{\,y - \Tilde{y}\,}}{\abs*{\,y\,}} \\
+& = w_1 \varepsilon_x + w_2 \varepsilon_y \, \quad \text{con $w_1=\frac{\abs*{\,x\,}}{\abs*{\,x + y\,}}$, $w_2=\frac{\abs*{\,y\,}}{\abs*{\,x + y\,}}$}
+\end{split}\]
+\textbf{Addizione $sign(x)=sign(y)$}\\
+In questo caso $\abs*{\,x + y\,} \ge \abs*{\,x\,}\,,\abs*{\,y\,} \Rightarrow w_1\,,w_2 \le 1$. Quindi l'addizione è stabile $\varepsilon_{x+y}\lesssim \varepsilon_x+\varepsilon_y$
+\\\\\textbf{Sottrazione $sign(x)\ne sign(y)$}\\
+In questo caso $\abs*{\,x + y\,} \le \abs*{\,x\,} \text{ e/o } \abs*{\,x + y\,} \le \abs*{\,y\,} \Rightarrow max\{w_1\,,w_2\} > 1$. Quindi la sottrazione è \underline{potenzialmente} instabile (se $w_1\,,w_2$ troppo grandi).\\
+Nel caso in cui $\abs*{\,x\,}\,,\abs*{\,y\,}$ siano molto vicini in termini \underline{relativi}, si ha
+\[
+\abs*{\,x + y\,} \ll \abs*{\,x\,}\,,\abs*{\,y\,} \, \Rightarrow \, w_1\,,w_2 \gg 1
+\]
+

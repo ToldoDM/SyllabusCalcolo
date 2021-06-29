@@ -1,0 +1,23 @@
+\section{Precisione di macchina come max errore relativo di arrotondamento nel sistema floating-point}
+Definiamo arrotondamento a $t$ cifre di un numero reale scritto in notazione floating-point \[ x = sign(x)(0,d_1 d_2 \dotsc d_t \dotsc) \cdot b^p \]
+il numero \[ fl^t(x) = sign(x)(0,d_1 d_2 \dotsc \Tilde{d}_t) \cdot b^p \]
+dove la mantissa è stata arrotondata alla $t$-esima cifra
+\[\Tilde{d}_t = 
+\begin{cases}
+d_t & \text{se $d_{(t+1)} < \frac{b}{2}$} \\
+d_t+1 & \text{se $d_{(t+1)} \ge \frac{b}{2}$}
+\end{cases}
+\]
+Definiamo: \[ \quad \text{Errore Relativo} \longleftarrow \frac{\overbrace{\lvert \, x - fl^t(x) \, \rvert}^{\text {\underline{Errore Assoluto}}}}{\lvert \, x \, \rvert} \quad \text{per}\quad x \ne 0 \]
+Stimiamo il numeratore
+\[ \begin{split}
+\lvert \, x - fl^t(x) \, \rvert & = b^p \cdot \overbrace{\lvert (0,d_1 d_2 \dotsc d_t \dotsc) - (0,d_1 d_2 \dotsc \Tilde{d}_t) \rvert}^{\text {Errore di arrotondamento a $t$ cifre dopo la virgola $ \le \frac{b^{-t}}{2}$ }} \\
+& \le b^p \cdot \frac{b^{-t}}{2} = \frac{b^{p-t}}{2}
+\end{split}\]
+Notiamo subito un aspetto: l'errore dipende da $p$, cioè dall'ordine di grandezza del numero (in base $b$).\\
+Stimiamo da sopra $ \frac{1}{\lvert \, x  \, \rvert} $, ovvero da sotto $\lvert \, x  \, \rvert$:
+\[ \lvert \, x \, \rvert = (0,d_1 d_2 \dotsc d_t \dotsc ) \cdot b^p \] \\
+Poiché $d_1 \ne 0$, $p$ fissato, il minimo valore della mantissa è $0,100 \dotsc = b^{-1}$. Quindi:
+\[ \lvert \, x  \, \rvert \ge b^{-1} \cdot b^{p} = b^{p-1} \iff \frac{1}{\lvert \, x  \, \rvert} \le \frac{1}{b^{p-1}} \]\\
+Otteniamo
+\[ \frac{\lvert \, x - fl^t(x) \, \rvert}{\lvert \, x \, \rvert} \, \le \, \frac{\frac{b^{p-t}}{2}}{b^{p-1}} \,=\, \frac{b^{p-t+1-p}}{2} \,=\, \frac{b^{1-t}}{2} \,=\, \varepsilon_M\]

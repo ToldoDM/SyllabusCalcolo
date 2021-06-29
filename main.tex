@@ -1,0 +1,109 @@
+\documentclass[12pt,a4paper,headings=optiontohead]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[margin=1.8cm,bottom=7em]{geometry}
+\usepackage[subpreambles=false]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} 
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{enumitem}
+
+\usepackage[normalem]{ulem}
+
+\usepackage{blkarray}% http://ctan.org/pkg/blkarray
+
+\newcommand{\matindex}[1]{\mbox{\scriptsize#1}}% Matrix index
+
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\inter}{\begin{matrix}\prod\end{matrix}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+\DeclarePairedDelimiter{\norma}{\lVert}{\rVert}
+\newtheorem*{esempio}{Esempio}
+
+\usepackage{import}
+\usepackage{hyperref}
+\begin{document}
+
+%------------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+%-----------------------------------------------INTESTAZIONE-------------------------------------------
+%------------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+
+\large Dalle dispense del\\[0.5cm] % Major heading such as course name
+\textsc{\Large Prof. Marco Vianello}\\[1.5cm] % Minor heading such as course title
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Syllabus}\\
+{ \huge \bfseries Dimostrazioni Irrinunciabili\\[0.15 cm]} % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+\LARGE Università degli Studi di Padova\\[0.4cm] % Name of your university/college
+\textsc{\large Dipartimento di Matematica}\\[0.05cm]
+\textsc{\large Corso di Laurea in Informatica}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+{\Large Anno accademico 2020 - 2021}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+
+\begin{center}
+\pagebreak
+
+\section*{Premessa}
+\begin{minipage}{0.9\textwidth} \large
+
+Questa raccolta di appunti non intende essere un sostituto allo studio completo degli argomenti di calcolo numerico. Gli appunti sono stati scritti secondo quanto studiato e capito, di conseguenza potrebbe contenere errori/non essere esaustivo nella risposta agli argomenti del syllabus.
+
+\end{minipage}
+
+\end{center}
+\pagebreak
+
+%------------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+%-----------------------------------------------INDICE-------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+
+\tableofcontents
+
+\newpage
+\import{res/}{precis_macchina}
+\newpage
+\import{res/}{analisi_stab}
+\newpage
+\import{res/}{conv_bisez}
+
+\end{document}
