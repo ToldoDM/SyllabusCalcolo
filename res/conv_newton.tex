@@ -43,6 +43,24 @@ x_{n+1} = x_n -
 \end{rcases}
 >0
 \]
-Poiché per $x_n \in (\xi,b\,]$ si ha $f(x_n)>0$. Inoltre $f'(x_n)>0$ in $(\xi,b\,]$ altrimenti per avere uno zero $f''$ in $(\xi,b\,]$ dovrebbe cambiare segno.
+Poiché per $x_n \in (\xi,b\,]$ si ha $f(x_n)>0$. Inoltre $f'(x_n)>0$ in $(\xi,b\,]$ altrimenti per avere uno zero $f''$ in $(\xi,b\,]$ dovrebbe cambiare segno.\\
+Abbiamo quindi che $\{x_n\}$ è una successione decrescente, con $x_n>\xi \,\,\,\,\, \forall n$.\\
+Allora
+\[
+\exists \lim_{n \to \infty} x_n = inf\{x_n\} = \eta \quad \text{con} \quad \eta \geq \xi\
+\]
+Infine
+\[
+\begin{split}
+\eta & = \lim x_{n+1} = \lim \left( x_n - \frac{f(x_n)}{f'(x_n)} \right) \\
+& = \lim x_n - \lim\frac{f(x_n)}{f'(x_n)} \\
+& = \lim x_n - \frac{\lim f(x_n)}{\lim f'(x_n)} \\ 
+& = \lim x_n - \frac{f(\lim x_n)}{f'(\lim x_n)} \leftarrow \,\, \lim x_n=\eta\\
+& = \eta - \frac{f(\eta)}{f'(\eta)}
+\end{split}
+\]
+Quindi
+\[\eta=\eta-\frac{f(\eta)}{f'(\eta)} \quad \text{ con } f'(\eta) \neq 0 \Rightarrow \frac{f(\eta)}{f'(\eta)} = 0 \Rightarrow f(\eta)=0 \Rightarrow \eta=\xi\]
+
 
 

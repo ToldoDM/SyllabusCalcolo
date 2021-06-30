@@ -1,0 +1,39 @@
+\section{Ordine di convergenza delle iterazioni di punto fisso}
+Sia $\xi$ punto fisso di $\phi \in C(I)$  e I è un intervallo chiuso (non necessariamente limitato) di $\mathbb{R}$.\\ 
+Supponiamo di essere nelle ipotesi in cui:
+\begin{equation*}
+x_{n+1} = \phi(x_n) \quad \text{converge a } \xi \,\,\,(\xi=\phi(\xi)) \quad \text{con} \quad x_0\in I
+\end{equation*}
+Allora:
+\begin{itemize}
+	\item $\{x_n\}$ ha ordine esattamente $p=1 \iff 0<\abs*{\phi'(\xi)}<1$ 
+	\item $\{x_n\}$ ha ordine esattamente $p>1 \iff \phi^{(j)}(\xi)=0$ e $\phi^{(p)}(\xi)\ne0$ con $1\le j\le p-1$ 
+\end{itemize}
+\textbf{Dimostrazione}\\
+1) si dimostra subito visto che
+\[e_{n+1}={\abs*{\phi'(z_n)}}e_n \quad \text{con} \,\, z_n\in(\xi,x_n)\]
+\[\Downarrow\]
+\[\lim_{n \to \infty} \frac{e_{n+1}}{e_n} = \abs*{\phi'(\lim_{n \to \infty }z_n)} = \abs*{\phi'(\xi)}\]
+per 2) utilizziamo la formula di Taylor di grado $p-1$ centrata in $\xi$ e calcolata in $x_n$, con il resto $p$-esimo in forma di Lagrange.
+\[
+x_{n+1}=\phi(x_n)=\phi(\xi)+\phi'(\xi)(x_n-\xi)+\dots+\frac{\phi^{(p-1)}(\xi)}{(p-1)!}(x_n-\xi)^{(p-1)}+\frac{\phi^{(p-1)}(\xi)}{(p-1)!}+\frac{\phi^{(p)}(u_n)}{p!}(x_n-\xi)^p
+\]
+con $u_n \in (\xi,x_n)$\\
+\begin{itemize}
+	\item \textbf{Dimostriamo $``\Leftarrow"$ (condizione sufficiente)}\\
+	Da Taylor resta solo
+	\[x_{n+1}-\xi=\frac{\phi^{(p)}(u_n)}{p!}(x_n-\xi)^p\]
+	e passando ai moduli
+	\[\frac{e_{n+1}}{e_n^p}=\frac{\abs{\phi^{(p)}(u_n)}}{p!}\underset{n\to\infty}{\longrightarrow}\frac{\abs{\phi^{(p)}(\xi)}}{p!}\neq 0\]
+	$e_n^p$ ovvero per $p$, $\{x_n\}$ ha ordine esattamente $p$. \\
+	\item \textbf{Dimostriamo ``$\Rightarrow$" (condizione necessaria)}\\ 
+	Per ipotesi $\{ x_n \}$ ha esattamente ordine $p>1$.\\
+	Abbiamo per assurdo che $\exists\ j<p :\phi^{(j)}(\xi)\neq 0 $, prendiamo $k=\min\{ j<p:\phi^{(j)}(\xi)\neq0\}$ e dal polinomio di Taylor iniziale si avrebbe:
+	\[\frac{e_{n+1}}{e_n^k}\underset{n\to \infty}{\to} \frac{\abs{\phi^{(k)}(\xi)}}{k!}=L'\neq 0\] 
+	ma allora
+	\[\frac{e_{n+1}}{e_n^p} = \frac{e_{n+1}}{e_n^k}\cdot e_n^{k-p}\]
+	\[\left( \frac{e_{n+1}}{e_n^k} \to L' \text{ ed } e_n^{k-p} \to \infty \text{ perchè } k-p<0 \text{ ed } e_n \to 0 \right) \]
+	cioè 
+	\[\frac{e_{n+1}}{e_n^p} \to \infty, \quad n \to \infty\]
+	contraddicendo l'ipotesi che $\{x_n\}$ abbia ordine esattamente $p$.
+\end{itemize}

@@ -1,0 +1,23 @@
+\section{Velocità (ordine) di convergenza del metodo di Newton}
+Sia
+\[
+\begin{cases}
+f\in C^2[a,b]\\
+\xi \in [a,b] : f(\xi) = 0\\
+\{x_n\} \subset [c,d] \subseteq [a,b]\\
+f'(x) \neq 0$ $\forall x\in [c,d]
+\end{cases}
+\Rightarrow e_{n+1} \le c\ e_n^2, \quad n\ge0, \quad c = \frac{1}{2} \cdot \frac{M_2}{m_1}
+\]
+\[\text{con } M_2 = \max_{x\in[c,d]}\abs{\,f''(x)\,}, \quad m_1 = \min_{x\in[c,d]}\abs{\,f'(x)\,} > 0\]
+\textbf{Dimostrazione}\\
+Applichiamo la formula di Taylor centrata in $x_n$ e calcolata in $\xi $ , con resto del II ordine in forma di Lagrange
+\[\underbrace{f(\xi)}_{=0}=f(x_n)+f'(x_n)(\xi-x_n)+\frac{f''(z_n)}{2}(\xi-x_n)^2 \quad z_n\in int(x_n,\xi)\subset [c,d]\]
+\[\Downarrow\]
+\[\underbrace{-\frac{f(x_n)}{f'(x_n)}}_{= x_{n+1}-x_n}=\xi-x_n+\frac{f''(z_n)}{2f'(x_n)}(\xi-x_n)^2\]
+\[\Downarrow\]
+\[x_{n+1}=\xi+\frac{f''(z_n)}{2\cdot f'(x_n)}(\xi-x_n)^2\]
+\[\overset{aggiungendo\,i\,moduli}{\Downarrow}\]
+\[e_{n+1}=|x_{n+1}-\xi|=c_ne_n^2 \quad \text{con} \quad c_n=\frac{1}{2}\frac{|f''(z_n)|}{|f'(x_n)|}\]
+Applicando il teorema di Weierstrass ($\exists$ di max, min assoluti in un intervallo chiuso e limitato)
+\[\abs*{f''(z_n)}\leq \max_{x\in[c,d]}\abs{\,f''(x)\,}=M_2,\quad \abs*{f'(x_n)} = \min_{x\in[c,d]}\abs{\,f'(x)\,} > m_1\]
