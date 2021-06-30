@@ -1,0 +1,42 @@
+\section{Esistenza e unicità dell'interpolazione polinomiale}
+\textbf{Unicità}\\
+Supponiamo che $\exists$ due polinomi $p,q \in \mathbb{P}_n$ (polinomi di grado $\le n$), $p\ne q$, che interpolano $p(x_i)=y_i=q(x_i)$, con $0\leq i \leq n \quad \rightarrow \quad n+1$ modi di interpolare.\\
+Poiché $\mathbb{P}_n$ è uno spazio vettoriale $\quad \Rightarrow \quad p-q\in\mathbb{R}_n$.\\
+Allora:
+\[
+(p-q)(x_i) = p(x_i) - q(x_i) = 0, \ \ \forall \ 0 \leq i \leq n
+\]
+\[
+\underset{p-q \ \text{ha $n+1$ zeri distinti}}{\Downarrow}
+\]
+Ma per il teorema fondamentale dell'algebra, $p-q$ può avere al massimo $n$ zeri distinti, a meno che non sia il polinomio nullo
+\[
+(p-q)(x) = 0 \ \ \forall x \quad \Rightarrow \quad p(x) = q(x) \ \ \forall x
+\]
+\textbf{Esistenza}\\
+Definiamo il "polinomio di Lagrange":
+\[
+l_i(x) = \frac{N_i(x)}{N_i(x_i)}
+\]
+dove
+\[
+N_i(x) = \prod_{j=0, \ j\neq i}^n (x-x_j) = (x-x_0) \dots (x-x_{i-1})(x-x_{i+1}) \dots (x-x_n)
+\]
+$l_i(x)\in\mathbb{P}_n$ poiché $N_i(x)\in\mathbb{P}_n$ e $N_i(x_i)$ è un numero $\ne0$.\\
+Osserviamo che:
+\[l_i(x_k) = \delta_{ik} =
+\begin{cases}
+0 & i\ne k \\
+1 & i=k 
+\end{cases}\]
+Definiamo il "polinomio interpolatore di Lagrange":
+\[ f_n(x) = \prod_n(x) = \sum_{i=0}^n y_i l_i(x) \quad \in\mathbb{P}_n\]
+Verifichiamo che interpola
+\[
+\begin{split}
+\prod _n (x_k) & = \sum_{i=0}^n y_i l_i (x_k) \\
+& = \sum_{i=0}^n y_i \delta_{ik} \\
+& = y_k \ \delta_{kk} \quad \longleftarrow \quad \text{perchè } \delta_{ik}=0, i \ne k\\
+& = y_k, \quad 0 \leq k \leq n
+\end{split}
+\]

@@ -1,0 +1,75 @@
+\section{Stima delle equazioni normali per l'approssimazione polinomiale ai minimi quadrati}
+Dati $N$ punti $\{ (x_i, y_i) \}\ : \ y_i = f(x_i), \ 1 \leq i \leq N$ e $m < N$, il vettore $a \in \mathbb{R}^{m+1}$\\
+minimizza $\phi(a) = \sum\limits_{i=1}^N (y_i - \sum\limits_{j=0}^m a_j \cdot x_i^j)^2 \iff $ risolve il sistema $V^t Va = V^t y$\\
+\textbf{Dimostrazione}\\
+Osserviamo le dimensioni degli elementi considerati
+\[
+V \in \mathbb{R}^{N \times (m+1)}, \quad V^t \in \mathbb{R}^{(m+1) \times N}, \quad y \in \mathbb{R}^{N}, \quad a \in \mathbb{R}^{m+1}
+\]
+Quindi per $m=1$ non importa quanti dati $N$ ci siano, il sistema sarà sempre $2\times2$ poiché ci saranno 2 coefficienti.\\
+Dire che $a \in \mathbb{R}^{m+1}$ è di minimo (assoluto) per $\phi(a)$ significa:
+\[
+\phi(a+b) \geq \phi(a) \quad \forall b \in \mathbb{R}^{m+1}
+\]
+Osserviamo che
+\[ \begin{split}
+\phi(a+b) & = (y-V(a+b),\, y-V(a+b)) = 
+(y-Va-Vb, \, y-Va-Vb) = \\
+& = (y-Va,\, y-Va) + (y-Va, \, -Vb) + (-Vb, \, y-Va) + (-Vb, \, -Vb) = \\
+& = \phi(a) + 2(Va-y, \, Vb) + (Vb, \, Vb) = \phi(a) +2(V^t(Va-y), \, b) + (Vb, \, Vb)
+\end{split} \]
+dove abbiamo usato le seguenti proprietà del prodotto scalare in $\mathbb{R}^{m}$ (per chiarezza indicato con $(u,v)_n$; ricordiamo che $(u,v)_n=u^tv$ interpretando i vettori come vettori-colonna):
+\begin{enumerate}
+	\item $(u,v)_n=(v,u)_n \quad u,v,w \in \mathbb{R}^{n}$
+	\item $(\alpha u,v)_n= \alpha(u,v)_n \quad \alpha \in \mathbb{R}$
+	\item $(u+v,w)_n=(u,w)_n+(v,w)_n$
+	\item $(u,Az)_n = (A^tu,z)_k \quad u \in \mathbb{R}^{n}, \; z \in \mathbb{R}^{k}, \; A \in \mathbb{R}^{n \times k}$
+\end{enumerate}
+Dimostriamo ``$\Leftarrow$":\\
+ Se $V^t Va=V^t y$ allora:
+\[
+V^tVa-V^ty=0 \quad \iff \quad V^t(Va-y)=0\]
+Ma allora
+\[ \begin{split}
+\phi(a+b)=\phi(a)+ \equalto{(Vb,\, Vb)}{\sum_{i=1}^{N}(Vb)_i^2 \geq 0} \geq \phi(a) \quad b \in \mathbb{R}^{m+1}
+\end{split} \]
+Dimostriamo ``$\Rightarrow$": \\
+Assumiamo che
+\[
+\phi(a+b) \geq \phi(a) \quad \forall b \in \mathbb{R}^{m+1}
+\]
+Allora:
+\[ \begin{split}
+\phi(a+b)=\phi(a)+2(V^t(Va-y), \, b)+(Vb,Vb) \geq \phi(a) \quad \forall b
+\end{split} \]
+Cioè:
+\[
+2(V^t(Va-y), \, b) + (Vb,Vb) \geq 0 \quad \forall b
+\]
+Prendiamo $b=\varepsilon v$, con $v$ versore (cioè vettore di lunghezza 1, $(v,v)=1$). Si ha:
+\[ \begin{split}
+& 2(V^t(Va-y), \, \varepsilon v)+(V(\varepsilon v), \, V(\varepsilon v)) \\
+ = \ & 2\varepsilon (V^t(Va-y), \, v) + \varepsilon^2(Vv,Vv) \geq 0 \quad \forall \varepsilon \geq 0 \text{ e } \forall v
+\end{split} \]
+Dividendo per $\varepsilon > 0$:
+\[ 
+2(V^t(Va-y), \, v) + \varepsilon(Vv,Vv) \geq 0 \quad \forall \varepsilon \text{ e } \forall v
+\]
+Per $\varepsilon \to 0$ si ha:
+\[ \begin{split}
+(V^t(Va-y), \, v) \geq 0 \quad \forall v
+\end{split} \]
+Ma se vale $\forall$ versore, possiamo prendere $-v$:
+\[ (V^t(Va-y), \, -v)=-(V^t(Va-y), \, v) \geq 0 \quad \forall v\]
+\[ \Downarrow\]
+\[
+(V^t(Va-y), \, v)\le0 \quad \forall v
+\]
+Ma abbiamo che
+\[
+0\le (V^t(Va-y), \, v)\le0 \iff (V^t(Va-y), \, v) = 0 \quad \forall v
+ \]
+L'unico vettore ortogonale a tutti i vettori è il vettore nullo. Quindi
+\[
+V^t(Va-y)=0 \iff V^tVa=V^ty
+s\]

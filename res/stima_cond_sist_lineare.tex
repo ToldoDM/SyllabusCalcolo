@@ -1,0 +1,75 @@
+\section{Stime di condizionamento per un sistema lineare }
+\begin{itemize}
+	\item[(i)]$\norma{Ax} \leq \norma{A}\cdot\norma{x}$ (1$^\circ$ diseguaglianza fondamentale)
+	\item[(ii)] $\norma{AB} \leq \norma{A} \cdot\norma{B}$ (2$^\circ$ diseguaglianza fondamentale)
+\end{itemize}
+\textbf{\fbox{Caso 1} perturbazione termine noto}\\
+Sia
+\begin{itemize}
+	\item  $A \in \mathbb{R}^{n\times n}$ non singolare
+	\item $x \in \mathbb{R}^n$ soluzione del sistema $Ax=b$ con $b \neq 0$
+	\item $\Tilde{x}=x+\delta x$ soluzione del sistema $A\Tilde{x}=\Tilde{b}$ con $\Tilde{b}=b+\delta b$
+\end{itemize}
+Fissata una norma vettoriale $\norma{\cdot}$ in $\mathbb{R}^n$, vale la seguente stima dell'errore relativo su $x$
+\begin{equation*}
+\frac{\norma{\delta x}}{\norma{x}} \leq K(A) \frac{\norma{\delta b}}{\norma{b}} \quad \text{con} \quad k(A)\underset{condiz.}{\underset{indice\,di}{=}}\norma{A}\cdot\norma{A^{-1}}
+\end{equation*}
+\textbf{Dimostrazione}\\
+Osserviamo che $x=A^{-1}b\neq0$ quindi ha senso studiare l'errore relativo (dividere per $\norma{x}$). \\Si ha
+\begin{equation*}
+\begin{cases}
+\tilde{x} = x + \delta x \\
+\tilde{x}=A^{-1}\tilde{b}=A^{-1}(b+\delta b)=\underbrace{A^{-1}b}_{= x}+A^{-1}\delta b
+\end{cases}
+\quad \Rightarrow \quad \norma{\delta x}=\norma{A^{-1}\delta b}\underset{1^o dis. fond.}{\leq}\norma{A^{-1}}\cdot\norma{\delta b}
+\end{equation*}
+Per stimare $\frac{1}{\norma{x}}$ da sopra, cioè da sotto $\norma{x}$.
+\begin{equation*}
+\norma{b}=\norma{Ax}\underset{1^o dis. fond.}{\leq}\norma{A}\cdot\norma{x}
+\end{equation*}
+da cui
+\begin{equation*}
+\norma{x}\geq\frac{\norma{b}}{\norma{A}}
+\end{equation*}
+e
+\begin{equation*}
+\frac{1}{\norma{x}} \le \frac{\norma{A}}{\norma{b}}
+\end{equation*}
+perciò
+\begin{equation*}
+\frac{\norma{\delta x}}{\norma{x}}\leq \frac{\norma{A^{-1}}\cdot\norma{\delta b}}{\norma{x}}\leq \norma{A^{-1}}\cdot\norma{A}\cdot\frac{\norma{\delta b}}{\norma{b}}=k(A)\cdot\frac{\norma{\delta b}}{\norma{b}}
+\end{equation*}
+\textbf{\fbox{Caso 2} perturbazione matrice}\\
+Siano fatte le stesse ipotesi del caso 1, ma con $\tilde{A} \tilde{x} = b, \ \tilde{A} = A + \delta A$.\\
+Vale la stima dell' "errore relativo" su $x$
+\[
+\frac{\norma{\delta_x}}{\norma{\tilde{x}}} \le k(A) \cdot \frac{\norma{\delta A}}{\norma{A}}
+\]
+\textbf{Dimostrazione}
+\[
+\begin{cases}
+\begin{split}
+\tilde{A}\tilde{x} & =(A+\delta A)(x+\delta x)\\
+& = Ax + A\delta x + \delta A\tilde{x}\\
+& = b + A\delta x + \delta A\tilde{x}
+\end{split}\\
+\tilde{A}\tilde{x} = b
+\end{cases}
+\Rightarrow \quad A\delta x + \delta A\tilde{x}=0 \iff \delta x=-A^{-1} (\delta A\tilde{x})
+\]
+Quindi
+\[
+\norma{\delta x} \le \norma{A^{-1}} \cdot \norma{\delta A \tilde{x}} \le \norma{A^{-1}} \cdot \norma{\delta A} \cdot \norma{\tilde{x}}
+\]
+e perciò
+\[
+\frac{\norma{\delta x}}{\norma{\tilde{x}}} \le \norma{A^{-1}} \cdot \norma{\delta A} = \norma{A} \cdot \norma{A^{-1}} \cdot \frac{\norma{\delta A}}{\norma{A}} = k(A) \cdot \frac{\norma{\delta A}}{\norma{A}}
+\]
+\textbf{\fbox{Caso 3} perturbazione termine noto e matrice}\\
+Stesse ipotesi degli altri casi ma con $\tilde{A}\tilde{x}=\tilde{b}$.\\
+Si ha che se $k(A) \cdot \frac{\norma{\delta A}}{\norma{A}}<1$ allora:
+\[
+\begin{split}
+\frac{\norma{\delta x}}{\norma{x}} \le \frac{k(A)}{1 - k(A) \cdot \frac{\norma{\delta A}}{\norma{A}}} \cdot (\frac{\norma{\delta A}}{\norma{A}} + \frac{\norma{\delta b}}{\norma{b}})
+\end{split}
+\]

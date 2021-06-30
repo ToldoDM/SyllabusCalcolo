@@ -1,0 +1,23 @@
+\section{Convergenza uniforme dell'interpolazione lineare a tratti}
+\textbf{Teorema}\\
+Convergenza uniforme dell'interpolazione polinomiale a tratti.\\
+Siano $f\in C^{s+1}[a,b]$, $s\ge0$ e $\{x_i\}\subset[a,b] \ \ n+1$ nodi distinti con $n$ multiplo di $s$.\\
+Allora 
+\[
+\exists k_s > 0: \ dist(f, \prod_s^c) \leq k_s \cdot h^{s+1}, \ h = max \ \Delta x_i
+\]
+\textbf{Dimostrazione} per $s=1$.\\
+Si ha che:
+\[ \begin{split}
+dist(f, \inter_{1}^{c}) & = \max_{x \in [a,b]} |f(x) - \inter_{1}^{c} (x) | \\
+& = \max_{0 \le i \le n-1}\, \max_{x \in [x_i, x_{i+1}]} |f(x) - \inter_{1}^{c} (x) |
+\end{split} \]
+Ricordiamo la stima dell'errore di interpolazione polinomiale a grado $s$:
+\[\max_{x\in [\alpha , \beta]}|f(x) - \inter_{s}^{}(x)| \le \max_{x\in [\alpha , \beta]}|f^{(s+1)}(x)|\cdot\frac{h^{s+1}}{4(s+1)} \quad con \ \ h=\frac{\beta-\alpha}{s} \]
+Applichiamo al nostro caso: $s=1, \quad [\alpha,\beta]=[x_{i-1},x_i]$ 
+\[\max_{x\in [x_{i-1},x_i]}|f(x) - \inter_{1,i}^{}(x)| \le \max_{x\in [x_{i-1},x_i]}|f''(x)|\cdot\frac{h^2}{8} = M_{2,i} \frac{h^2}{8} \]
+con $M_2 = \max_{x\in[x_{x_i-1},x_i]} |f''(x)|$ e $h=\Delta x_i$.\\
+Da cui:
+\[
+dist(f, \inter_{1}^{c}) \le \frac{M_2}{8}h^2 \]
+con $M_2 = \max_{x\in[a,b]} |f''(x)|$
